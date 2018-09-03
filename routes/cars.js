@@ -5,76 +5,36 @@ var error = require('../error');
 var multer = require('multer');
 
 
+var path = '';
+
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads')
+  },
+  filename: function (req, file, cb) {
+    
+    cb(null, file.fieldname + '-' + Date.now() +'.jpg')
+  }
+})
+
+
+
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
   res.send('respond with a resource');
 });
 
-// var storage = multer.diskStorage({
-//     destination:'../carbazarapp/src/assets/images',
-//     filename: function (req, file, cb) {
-//       var fileSplit = file.originalname.split(".");
-// var filename = file.originalname; 
-// var fileLength = fileSplit.length;
-// var extension = fileSplit[fileLength-1];
-// filename = filename.replace("."+extension,"-");
-// cb( null, filename+ Date.now()+"."+extension);
-//     }
-//   })
-   
-//   var upload = multer({ storage: storage }).single('images')
-
-// router.post('/addcar', function (req, res) {
-//   console.log(req.file);
-//   upload(req, res, function (err) {
-//     if (err)
-//      {
-//       // An error occurred when uploading
-//       console.log(err);
-//     }
-
-//     var newCar = new Car({
-//       "user": req.body.userid,
-//       "registration_no": req.body.registration_no,
-//       "model": req.body.model,
-//       "speedometer": req.body.speedometer,
-//       "manufacturer": req.body.manufacturer,
-//       "photopath":req.file.filename,
-//       "cost": req.body.cost,
-//     });
-
-
-//     var currentDate = new Date();
-//     newCar.created_at = currentDate;
-//     newCar.updated_at = currentDate;
-
-//     newCar.save(function (err, car) {
-//       try {
-//         if (err) return res.send({ "status": "Error", "message": "Registration Number already Exists" });
-//         return res.send({ "status": "Success", "message": "Data Inserted", "cars": car, "path" : req.file.path });
-//       }
-//       catch (err) {
-//         res.send({ "status": "Error", "message": err });
-//         throw err
-//       }
-//     });
-
-//     // Everything went fine
-//   })
-// });
-
-
-var upload = multer({ dest: DIR }).single('photo');
+// var upload = multer({ dest: DIR }).single('photo');
 var upload = multer({ storage: storage }).array('photo', 8)
 router.post('/addcar',function (req, res) {
-  Start Validations
-  req.assert('model', error.model).notEmpty();
-  req.assert('speedometer', error.speedometer).notEmpty();
-  req.assert('manufacturer', error.manufacture).notEmpty();
-  req.assert('cost', error.cost).notEmpty();
-  req.assert('photos', error.photos).isEmpty();
-  End Validations
+  //Start Validations
+  // req.assert('model', error.model).notEmpty();
+  // req.assert('speedometer', error.speedometer).notEmpty();
+  // req.assert('manufacturer', error.manufacture).notEmpty();
+  // req.assert('cost', error.cost).notEmpty();
+  // req.assert('photos', error.photos).isEmpty();
+  //End Validations
 
 
   upload(req, res, function (err) {
@@ -98,12 +58,12 @@ router.post('/addcar',function (req, res) {
       });
 
 
-      console.log(req.body.photopath);
-      console.log(req.file);
-      console.log(req.files.file.name);
-      console.log(req.files.file);
+      // console.log(req.body.photopath);
+      // console.log(req.file);
+      // console.log(req.files.file.name);
+      // console.log(req.files.file);
 
-      get the current date
+      // get the current date
       var currentDate = new Date();
       newCar.created_at = currentDate;
       newCar.updated_at = currentDate;
@@ -242,42 +202,42 @@ router.get('/getByID/:_id', function (req, res) {
 
 
 
-// router.put('/upload/:registration_no', function (req, res) {
-//   var storage = multer.diskStorage({
-//     destination: function (req, file, cb) {
-//       cb(null, './uploads')
-//     },
-//     filename: function (req, file, cb) {
+router.put('/upload/:registration_no', function (req, res) {
+  var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, './uploads')
+    },
+    filename: function (req, file, cb) {
       
-//       cb(null, file.fieldname + '-' + Date.now() +'.jpg')
-//     }
-//   })
+      cb(null, file.fieldname + '-' + Date.now() +'.jpg')
+    }
+  })
    
-//   var upload = multer({ storage: storage }).single('Photopath')
-// console.log(res);
-// upload(req, res, function (err) {
-//   if (err)
-//    {
-//     // An error occurred when uploading
-//     console.log(err);
-//   }
-//   else{
-//     Car.findOne({"registration_no": req.params.regid}, {}, { sort: { registration_no:-1 } }.limit(1),
-//      function(err, post) {
-//       //console.log( post );
-//       if (err) return res.send({ "message": "There was a problem finding the user." });
-// //       if (!Car) return res.send("No user found.");
-//        return res.send({ "status": "Success", "message": "Car by id", "cars": Car });
-//        var newvalues = {
-//          $set: {
-//            "photopath": req.body.photopath
-//          }
-//        };
-//        Car.update({"registration_no": req.params.regid}, newvalues, function (err, Car) {
-//       if (err) return res.send({ "status": "Error", "message": err });
-//          return res.send({ "status": "Success", "message": "Carlist", "Cars": Car });
-//        });
-//      });
+  var upload = multer({ storage: storage }).single('Photopath')
+console.log(res);
+upload(req, res, function (err) {
+  if (err)
+   {
+    // An error occurred when uploading
+    console.log(err);
+  }
+  else{
+    Car.findOne({"registration_no": req.params.regid}, {}, { sort: { registration_no:-1 } }.limit(1),
+     function(err, post) {
+      //console.log( post );
+      if (err) return res.send({ "message": "There was a problem finding the user." });
+      if (!Car) return res.send("No user found.");
+      return res.send({ "status": "Success", "message": "Car by id", "cars": Car });
+      var newvalues = {
+        $set: {
+          "photopath": req.body.photopath
+        }
+      };
+      Car.update({"registration_no": req.params.regid}, newvalues, function (err, Car) {
+        if (err) return res.send({ "status": "Error", "message": err });
+        return res.send({ "status": "Success", "message": "Carlist", "Cars": Car });
+      });
+    });
 
     //res.json({success: true, message: "Image uploaded!"})
   // Everything went fine
@@ -285,9 +245,5 @@ router.get('/getByID/:_id', function (req, res) {
 })
 });
 //app.use('api',router);
-
-
-
-
 module.exports = router;
 
