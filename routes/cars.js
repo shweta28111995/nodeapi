@@ -16,7 +16,7 @@ cb( null, filename+ Date.now()+"."+extension);
     }
   })
    
-  var upload = multer({ storage: storage }).single('images')
+  var upload = multer({ storage: storage }).single('images');
   router.post('/addcar', function (req, res) {
   console.log(req.file);
   upload(req, res, function (err) {
@@ -33,7 +33,7 @@ cb( null, filename+ Date.now()+"."+extension);
       "speedometer": req.body.speedometer,
       "manufacturer": req.body.manufacturer,
       "photopath":req.file.filename,
-      "cost": req.body.cost,
+      "cost": req.body.cost
     });
 
 
