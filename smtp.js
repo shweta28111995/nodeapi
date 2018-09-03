@@ -5,8 +5,10 @@ var smtpTransport = nodemailer.createTransport(smtpTransport({
     secureConnection: true,
     port: 587,
     auth: {
-        user: "donotreply.testing.web@gmail.com",
-        pass: "5jrC+7G~"      
+       // user: "donotreply.testing.web@gmail.com",
+       // pass: "5jrC+7G~"     
+       user: "vikrammanchanda18@yahoo.com",
+        pass: "VICKY@18"  
     }
 }));
 
