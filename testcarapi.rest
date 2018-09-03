@@ -1,0 +1,62 @@
+###
+POST http://localhost:3000/cars/addcar
+Content-Type: application/json
+
+{
+     "userid": "5b765f16df07131a08cf5874",
+        "registration_no": "664657876",
+        "manufacturer": "Audi",
+        "model": "Audi",
+        "speedometer": 542400,
+        "status": "yes",
+        "isactive": true,
+        "isdeleted": false,
+        "cost": 15467700,
+        "photopath": "vggvfrbn"
+}
+###
+
+###
+GET http://localhost:3000/cars/getcarbyuser/5b765f16df07131a08cf5874
+
+###
+PUT http://localhost:3000/cars/deletecar/1234
+
+###
+
+
+###
+GET http://localhost:3000/cars/getCars/get
+
+###
+
+###
+PUT  http://localhost:3000/cars/updatecar/32548765
+Content-Type: application/json
+
+{
+    "model":"Tata",
+    "manufacturer": "Maruti"
+}
+###
+
+###
+GET http://localhost:3000/cars/getByID/5b765f16df07131a08cf5874
+###
+
+###
+PUT http://localhost:3000/cars/updateCarStatus/1255dsh53234556
+###
+
+###
+POST http://localhost:3000/orders/addorder
+Content-Type: application/json
+
+{
+     "userid": "5b765f16df07131a08cf5874",
+        "registration_no": "664657876",
+        "manufacturer": "Audi",
+        "model": "Audi",
+        "speedometer": 542400
+}
+###

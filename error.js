@@ -1,0 +1,20 @@
+module.exports = {
+    'email': 'email is required',
+    'firstnamereq': "FirstName cannot be blank",
+    'firstnamevalidator': "FirstName must contains characters",
+    'lastnamereq': "LastName cannot be blank",
+    'lastnamevalidator': "LastName must contains characters",
+    'password': "Password cannot be blank",
+    'passwordvalidator': " Password must be between 4 and 8 digits long and include at least one numeric digit.",
+    'emailregistered': "Email already exists",
+    'invalid':"Invalid Details",
+    //carlist
+    'registration_no':'registration_no is Required!',
+    'model':'model is Required!',
+    'speedometer':'speedometer is Required!',
+    'manufacture':'manufacture is Required!',
+    'cost':'cost is Required!',
+    'photos':'photos is Required!',
+    'carregistered': "Registration Number already exists",
+    'status':'status is Required1',
+    };

@@ -1,0 +1,129 @@
+###
+POST http://localhost:3000/users/register
+Content-Type: application/json
+
+{
+    "firstname":"shweta",
+    "lastname":"sachdeva",
+    "email":"shwetasachdeva1995@gmail.com",
+    "password":"12345678",
+    "isactive": true,
+    "isdeleted" : false
+}
+###
+
+###
+GET http://localhost:3000/users/getUsers
+
+###
+
+###
+GET http://localhost:3000/users/getId/5b5fe5xsf11cf5450f50d4508b
+
+###
+
+
+
+###
+GET http://localhost:3000/users/getuserbyemail/shwetasachdeva1995@gmail.com
+
+###
+
+###
+
+GET http://localhost:3000/users/totalcount
+
+###
+###
+PUT  http://localhost:3000/users/updateuser/noor@gmail.com
+Content-Type: application/json
+
+{
+    "firstname":"gurpreet",
+    "lastname":"sandhu",
+    "email":"noor@gmail.com",
+    "password":436646,
+    "isactive": true,
+    "isdeleted" : false
+}
+###
+
+###
+PUT http://localhost:3000/users/delete/shweta@gmail.com
+
+###
+
+###
+POST http://localhost:3000/users/login
+Content-Type: application/json
+
+{
+    "email":"shwetasachdeva1995@gmail.com",
+    "password":"123456789"
+}
+###
+
+###
+
+GET http://localhost:3000/users/sendemail
+
+###
+
+
+###
+POST http://localhost:3000/passwordreset
+
+{
+    "email":"guri.preet1@gmail.com"
+}
+###
+
+
+###
+
+GET http://localhost:3000/users/logout
+
+###
+
+###
+
+POST http://localhost:3000/users/forgot
+
+{
+    "email":"shwetasachdeva1995@gmail.com"
+}
+
+###
+
+###
+
+GET http://localhost:3000/users/sendemail
+
+###
+
+###
+GET http://localhost:3000/users/getuserID/5b6fcd38c6973a17c0e7a431
+
+
+###
+
+###
+PUT  http://localhost:3000/users/updateuserpassword/deepudeepak600@gmail.com
+Content-Type: application/json
+
+{
+    "password":"1234567890"   
+}
+###
+
+###
+
+GET http://localhost:3000/users/resetemail/shwetasachdeva1995@gmail.com
+
+###
+
+###
+
+PUT http://localhost:3000/users/rejectcarrequest/shwetasachdeva1995@gmail.com
+
+###
