@@ -18,19 +18,12 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var carsRouter = require('./routes/cars');
 var addCar= require('./routes/addcar');
-var orders= require('./routes/orders');
 
 
 var cors = require('cors');
 var app = express();
 //enables cors
-app.use(cors({
-'allowedHeaders': ['sessionId', 'Content-Type'],
-'exposedHeaders': ['sessionId'],
-'origin': '*',
-'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
-'preflightContinue': false
-}));
+app.use(cors());
 
 
 // view engine setup
@@ -48,7 +41,6 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/cars', carsRouter);
 app.use('/addcar', addCar);
-app.use('/orders', orders);
 
 
 // catch 404 and forward to error handler
