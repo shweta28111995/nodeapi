@@ -609,6 +609,10 @@ router.get('/getuserID/:_id', function (req, res) {
 router.post('/rejectcarrequest/', function (req, res) {
   console.log(req.body);
   try {
+    // Email code
+var api_key = 'd0040a59c4adc468820f340d2d68b302-f45b080f-55640388';
+var domain = 'demomail.customerdemourl.com';
+var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
   // "carreject" is template name
   var template = new EmailTemplate(path.join(templatesDir, 'carreject'));
   var locals = {
@@ -621,14 +625,15 @@ router.post('/rejectcarrequest/', function (req, res) {
   return console.error(err);
   }
   mailData = {
-  From : 'test@gmail.com',
+  from :  'CarBaazar<postmaster@demomail.customerdemourl.com>',
   to : req.body.email,
   subject : results.subject,
-  Text : results.text,
+  text : results.text,
   html : results.html
   }
-  var smtpProtocol = smtp.smtpTransport;
-  smtpProtocol.sendMail(mailData, function(error, info){
+  // var smtpProtocol = smtp.smtpTransport;
+  // smtpProtocol.sendMail(mailData, function(error, info){
+    mailgun.messages().send(mailData, function (err, info) {
   if (error) {
   res.send({ "status": "Error", "message": error });
   } else {
@@ -644,7 +649,6 @@ router.post('/rejectcarrequest/', function (req, res) {
   }
   
   });
-
   router.route('/updateuserpassword/:email').put(function (req, res) {
     var myquery = { "email": req.params.email };
     var newvalues = {
@@ -664,7 +668,10 @@ router.post('/rejectcarrequest/', function (req, res) {
 router.post('/sendcardetail', function (req, res) {
 console.log(req.body);
 try {
-
+// Email code
+var api_key = 'd0040a59c4adc468820f340d2d68b302-f45b080f-55640388';
+var domain = 'demomail.customerdemourl.com';
+var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
 var template = new EmailTemplate(path.join(templatesDir, 'carprice'));
 var locals = {
 customername: req.body.customername,
@@ -683,14 +690,15 @@ if (err) {
 return console.error(err);
 }
 mailData = {
-From : 'test@gmail.com',
+from : 'CarBaazar<postmaster@demomail.customerdemourl.com>',
 to : req.body.owneremail,
 subject : results.subject,
-Text : results.text,
+text : results.text,
 html : results.html
 }
-var smtpProtocol = smtp.smtpTransport;
-smtpProtocol.sendMail(mailData, function(error, info){
+// var smtpProtocol = smtp.smtpTransport;
+// smtpProtocol.sendMail(mailData, function(error, info){
+   mailgun.messages().send(mailData, function (err, info) {
 if (error) {
 res.send({ "status": "Error", "message": error });
 } else {
