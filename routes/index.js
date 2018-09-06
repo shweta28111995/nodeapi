@@ -3,7 +3,7 @@ var router = express.Router();
 var multer = require('multer');
 var Car = require('../models/Car');
 var storage = multer.diskStorage({
-    destination:'images',
+    destination:'https://carbazarweb2.herokuapp.com/assets/images',
     filename: function (req, file, cb) {
       var fileSplit = file.originalname.split(".");
 var filename = file.originalname; 
