@@ -17,6 +17,7 @@ mongoose.connect(config.database, { useNewUrlParser: true })
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var carsRouter = require('./routes/cars');
+var addcarRouter = require('./routes/addcars');
 
 
 var cors = require('cors');
@@ -39,6 +40,7 @@ app.use(expressValidator());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/cars', carsRouter);
+app.use('/addcars', addcarRouter);
 
 
 // catch 404 and forward to error handler
