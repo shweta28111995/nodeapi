@@ -24,44 +24,44 @@ router.get('/', function(req, res, next) {
 });
 
 
-router.post('/add', function (req, res) {
- // console.log(req.file);
-  upload(req, res, function (err) {
-    if (err)
-     {
-      // An error occurred when uploading
-      console.log(err);
-    }
+// router.post('/add', function (req, res) {
+//  // console.log(req.file);
+//   upload(req, res, function (err) {
+//     if (err)
+//      {
+//       // An error occurred when uploading
+//       console.log(err);
+//     }
 
-    var newCar = new Car({
-      "user": req.body.userid,
-      "registration_no": req.body.registration_no,
-      "model": req.body.model,
-      "speedometer": req.body.speedometer,
-      "manufacturer": req.body.manufacturer,
-      //"photopath":req.file.filename,
-      "cost": req.body.cost,
-    });
+//     var newCar = new Car({
+//       "user": req.body.userid,
+//       "registration_no": req.body.registration_no,
+//       "model": req.body.model,
+//       "speedometer": req.body.speedometer,
+//       "manufacturer": req.body.manufacturer,
+//       //"photopath":req.file.filename,
+//       "cost": req.body.cost,
+//     });
 
 
-    var currentDate = new Date();
-    newCar.created_at = currentDate;
-    newCar.updated_at = currentDate;
+//     var currentDate = new Date();
+//     newCar.created_at = currentDate;
+//     newCar.updated_at = currentDate;
 
-    newCar.save(function (err, car) {
-      try {
-        if (err) return res.send({ "status": "Error", "message": "Registration Number already Exists" });
-       // return res.send({ "status": "Success", "message": "Data Inserted", "cars": car, "path" : req.file.path });
-      }
-      catch (err) {
-        res.send({ "status": "Error", "message": err });
-        throw err
-      }
-    });
+//     newCar.save(function (err, car) {
+//       try {
+//         if (err) return res.send({ "status": "Error", "message": "Registration Number already Exists" });
+//        // return res.send({ "status": "Success", "message": "Data Inserted", "cars": car, "path" : req.file.path });
+//       }
+//       catch (err) {
+//         res.send({ "status": "Error", "message": err });
+//         throw err
+//       }
+//     });
 
-    // Everything went fine
-  })
-});
+//     // Everything went fine
+//   })
+// });
 
 
 
