@@ -2,19 +2,19 @@ var express = require('express');
 var router = express.Router();
 var multer = require('multer');
 var Car = require('../models/Car');
-var storage = multer.diskStorage({
-    destination:'../carbazarapp/src/assets/images',
-    filename: function (req, file, cb) {
-      var fileSplit = file.originalname.split(".");
-var filename = file.originalname; 
-var fileLength = fileSplit.length;
-var extension = fileSplit[fileLength-1];
-filename = filename.replace("."+extension,"-");
-cb( null, filename+ Date.now()+"."+extension);
-    }
-  })
+// var storage = multer.diskStorage({
+//     destination:'../carbazarapp/src/assets/images',
+//     filename: function (req, file, cb) {
+//       var fileSplit = file.originalname.split(".");
+// var filename = file.originalname; 
+// var fileLength = fileSplit.length;
+// var extension = fileSplit[fileLength-1];
+// filename = filename.replace("."+extension,"-");
+// cb( null, filename+ Date.now()+"."+extension);
+//     }
+//   })
    
-  var upload = multer({ storage: storage }).single('images');
+//   var upload = multer({ storage: storage }).single('images');
 
 
 
