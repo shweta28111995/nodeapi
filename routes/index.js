@@ -1,5 +1,5 @@
-var express= require('express');
-var router= express.Router();
+var express = require('express');
+var router = express.Router();
 var multer = require('multer');
 var Car = require('../models/Car');
 var storage = multer.diskStorage({
@@ -14,7 +14,15 @@ cb( null, filename+ Date.now()+"."+extension);
     }
   })
    
-  var upload = multer({ storage: storage }).single('images')
+  var upload = multer({ storage: storage }).single('images');
+
+
+
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'Express' });
+});
+
 
 router.post('/add', function (req, res) {
   console.log(req.file);
@@ -54,6 +62,7 @@ router.post('/add', function (req, res) {
     // Everything went fine
   })
 });
+
 
 
 module.exports = router;
