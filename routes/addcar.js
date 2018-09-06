@@ -3,7 +3,7 @@ var router= express.Router();
 var multer = require('multer');
 var Car = require('../models/Car');
 var storage = multer.diskStorage({
-    destination:'../carbazarapp/src/assets/images',
+    destination:'./images',
     filename: function (req, file, cb) {
       var fileSplit = file.originalname.split(".");
 var filename = file.originalname; 
