@@ -14,7 +14,7 @@ mongoose.connect(config.database, { useNewUrlParser: true })
 .catch((err) => console.error(err));
 //End Database connection
 
-//var indexRouter = require('./routes/index');
+var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var carsRouter = require('./routes/cars');
 //var addcarRouter = require('./routes/addcars');
@@ -37,7 +37,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressValidator());
 
-//app.use('/', indexRouter);
+app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/cars', carsRouter);
 //app.use('/addcars', addcarRouter);
